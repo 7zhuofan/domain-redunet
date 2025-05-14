@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>首页 - {{ username }} - 知乎论坛</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- 知乎风格导航栏 -->
+    <nav class="navbar navbar-expand-lg zhihu-navbar shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/home/{{ session['username'] }}">
+                <i class="fa-solid fa-z"></i> 知乎论坛
+            </a>
+            
+            <!-- 搜索框 -->
+            <div class="zhihu-search-bar d-none d-md-block me-auto ms-4">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" placeholder="搜索问题、文章、用户">
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/home/{{ session['username'] }}">
+                            <i class="fa-solid fa-house"></i> 首页
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/view_users">
+                            <i class="fa-solid fa-users"></i> 用户
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_user">
+                            <i class="fa-solid fa-user-plus"></i> 添加用户
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="fa-solid fa-right-from-bracket"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 欢迎区域 -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="welcome-title">欢迎回来，{{ username }}</div>
+            <p class="welcome-subtitle">探索更多精彩内容，发现你感兴趣的话题和问答</p>
+        </div>
+    </section>
+    
+    <!-- 推荐内容区域 -->
+    <div class="container py-4">
+        <div class="row">
+            <!-- 左侧主要内容 -->
+            <div class="col-lg-8">
+                <!-- 热门问题区块 -->
+                <div class="zhihu-card mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">热门问题</h5>
+                        <a href="#" class="text-decoration-none">查看更多</a>
+                    </div>
+                    
+                    <!-- 问题列表 -->
+                    <div class="question-list">
+                        <div class="question-list-item">
+                            <h3 class="question-title">
+                                <a href="#">Python与Java在企业级开发中有哪些优劣势比较？</a>
+                            </h3>
+                            <div class="question-excerpt">
+                                作为两种主流编程语言，Python和Java各自有其特点。Python以简洁、快速开发著称，而Java则以稳定性、多平台和企业级应用见长...
+                            </div>
+                            <div class="question-meta">
+                                <span><i class="fa-solid fa-comment"></i> 42条回答</span>
+                                <span><i class="fa-solid fa-eye"></i> 12.5k次浏览</span>
+                                <span><i class="fa-solid fa-clock"></i> 2小时前</span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-list-item">
+                            <h3 class="question-title">
+                                <a href="#">如何有效提高Web应用的安全性？</a>
+                            </h3>
+                            <div class="question-excerpt">
+                                随着网络攻击日益频繁，保障Web应用安全变得尤为重要。有哪些实用的安全策略和最佳实践可以帮助开发者构建更安全的应用？
+                            </div>
+                            <div class="question-meta">
+                                <span><i class="fa-solid fa-comment"></i> 28条回答</span>
+                                <span><i class="fa-solid fa-eye"></i> 8.3k次浏览</span>
+                                <span><i class="fa-solid fa-clock"></i> 5小时前</span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-list-item">
+                            <h3 class="question-title">
+                                <a href="#">2025年最值得学习的前端技术栈有哪些？</a>
+                            </h3>
+                            <div class="question-excerpt">
+                                前端技术更新迭代迅速，作为开发者如何在众多框架和技术中做出选择？哪些技术值得投入时间深入学习？
+                            </div>
+                            <div class="question-meta">
+                                <span><i class="fa-solid fa-comment"></i> 36条回答</span>
+                                <span><i class="fa-solid fa-eye"></i> 15.2k次浏览</span>
+                                <span><i class="fa-solid fa-clock"></i> 1天前</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧边栏 -->
+            <div class="col-lg-4">
+                <!-- 用户个人信息卡片 -->
+                <div class="zhihu-card text-center">
+                    <div class="user-avatar mx-auto mb-3">
+                        {{ username[0] }}
+                    </div>
+                    <h5 class="mb-2">{{ username }}</h5>
+                    <p class="text-muted mb-3">个人简介尚未设置</p>
+                    <div class="d-flex justify-content-center gap-4 mb-3">
+                        <div>
+                            <div class="fw-bold">0</div>
+                            <div class="small text-muted">回答</div>
+                        </div>
+                        <div>
+                            <div class="fw-bold">0</div>
+                            <div class="small text-muted">问题</div>
+                        </div>
+                        <div>
+                            <div class="fw-bold">0</div>
+                            <div class="small text-muted">收藏</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn zhihu-btn zhihu-btn-outline w-100">
+                        <i class="fa-solid fa-pen-to-square me-2"></i>编辑资料
+                    </a>
+                </div>
+                
+                <!-- 热门话题 -->
+                <div class="zhihu-card mt-4">
+                    <h5 class="mb-3">热门话题</h5>
+                    <div>
+                        <a href="#" class="tag-item">Python</a>
+                        <a href="#" class="tag-item">Web开发</a>
+                        <a href="#" class="tag-item">JavaScript</a>
+                        <a href="#" class="tag-item">人工智能</a>
+                        <a href="#" class="tag-item">数据科学</a>
+                        <a href="#" class="tag-item">云计算</a>
+                        <a href="#" class="tag-item">网络安全</a>
+                        <a href="#" class="tag-item">区块链</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="bg-white mt-5 py-4 border-top">
+        <div class="container text-center text-muted">
+            <p class="mb-0">© 2025 知乎论坛 · <a href="#">关于我们</a> · <a href="#">使用条款</a> · <a href="#">隐私政策</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

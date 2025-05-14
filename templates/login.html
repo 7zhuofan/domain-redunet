@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - 知乎论坛</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <!-- 添加内联样式以解决对齐问题 -->
+    <style>
+        .input-icon {
+            position: absolute;
+            left: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8590a6;
+        }
+        
+        .form-control-with-icon {
+            padding-left: 40px;
+        }
+    </style>
+</head>
+<body class="login-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="login-card">
+                    <div class="login-header">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-z text-primary" style="font-size: 32px;"></i>
+                        </div>
+                        <h1 class="login-title">登录知乎论坛</h1>
+                        <p class="login-subtitle">发现更多精彩内容和问答</p>
+                    </div>
+                    
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="POST" action="/login" class="login-form zhihu-form">
+                        <div class="mb-4">
+                            <label for="username" class="form-label">用户名</label>
+                            <div class="position-relative">
+                                <i class="fa-solid fa-user input-icon"></i>
+                                <input type="text" class="form-control form-control-with-icon" id="username" name="username" placeholder="请输入用户名" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between">
+                                <label for="password" class="form-label">密码</label>
+                                <a href="#" class="small">忘记密码?</a>
+                            </div>
+                            <div class="position-relative">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input type="password" class="form-control form-control-with-icon" id="password" name="password" placeholder="请输入密码" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember-me">
+                                <label class="form-check-label" for="remember-me">
+                                    记住我
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn zhihu-btn zhihu-btn-primary w-100">登录</button>
+                        
+                        <div class="mt-4 text-center">
+                            <p class="text-muted">还没有账号? <a href="#" class="fw-bold">立即注册</a></p>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4 pt-3 border-top text-center">
+                        <p class="text-muted small mb-0">© 2025 知乎论坛 · 版权所有</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

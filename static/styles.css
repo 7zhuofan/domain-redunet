@@ -1,0 +1,399 @@
+
+/* 
+   知乎论坛风格CSS
+   组织结构：
+   1. 变量与全局样式
+   2. 布局组件（容器、卡片等）
+   3. 导航栏样式
+   4. 表单元素样式
+   5. 按钮样式
+   6. 表格样式
+   7. 特定页面样式
+*/
+
+/* 1. 变量与全局样式 */
+:root {
+    --zhihu-blue: #0084ff;
+    --zhihu-light-blue: #1890ff;
+    --zhihu-dark-blue: #0066cc;
+    --zhihu-gray: #f6f6f6;
+    --zhihu-dark-gray: #8590a6;
+    --zhihu-text: #121212;
+    --zhihu-secondary-text: #646464;
+    --zhihu-border: #ebebeb;
+    --zhihu-card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: #f7f8fa;
+    color: var(--zhihu-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--zhihu-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--zhihu-dark-blue);
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--zhihu-text);
+    margin-top: 0;
+}
+
+/* 2. 布局组件 */
+.zhihu-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.zhihu-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--zhihu-card-shadow);
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--zhihu-border);
+}
+
+.zhihu-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.zhihu-content {
+    padding: 30px 0;
+}
+
+/* 3. 导航栏样式 */
+.zhihu-navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0;
+}
+
+.zhihu-navbar .navbar-brand {
+    color: var(--zhihu-blue);
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+}
+
+.zhihu-navbar .navbar-nav .nav-link {
+    color: var(--zhihu-secondary-text);
+    font-size: 15px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.zhihu-navbar .navbar-nav .nav-link:hover,
+.zhihu-navbar .navbar-nav .nav-link.active {
+    color: var(--zhihu-blue);
+}
+
+.zhihu-navbar .navbar-nav .nav-link i {
+    margin-right: 6px;
+}
+
+.zhihu-search-bar {
+    max-width: 350px;
+    position: relative;
+}
+
+.zhihu-search-bar input {
+    border-radius: 999px;
+    padding-left: 40px;
+    background-color: #f6f6f6;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.zhihu-search-bar input:focus {
+    background-color: #fff;
+    border-color: var(--zhihu-blue);
+    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+.zhihu-search-bar i {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    color: var(--zhihu-dark-gray);
+}
+
+/* 4. 表单元素样式 */
+.zhihu-form .form-control {
+    border-radius: 4px;
+    padding: 10px 16px;
+    border: 1px solid var(--zhihu-border);
+    font-size: 15px;
+    background-color: #fff;
+    transition: all 0.3s;
+}
+
+.zhihu-form .form-control:focus {
+    border-color: var(--zhihu-blue);
+    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+.zhihu-form .form-label {
+    font-weight: 500;
+    color: var(--zhihu-secondary-text);
+    margin-bottom: 8px;
+}
+
+.zhihu-form-card {
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+/* 5. 按钮样式 */
+.zhihu-btn {
+    border-radius: 3px;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.zhihu-btn-primary {
+    background-color: var(--zhihu-blue);
+    border-color: var(--zhihu-blue);
+    color: white;
+}
+
+.zhihu-btn-primary:hover {
+    background-color: var(--zhihu-dark-blue);
+    border-color: var(--zhihu-dark-blue);
+    color: white;
+}
+
+.zhihu-btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--zhihu-border);
+    color: var(--zhihu-secondary-text);
+}
+
+.zhihu-btn-outline:hover {
+    background-color: #f0f2f5;
+    color: var(--zhihu-text);
+}
+
+.zhihu-btn-sm {
+    padding: 5px 12px;
+    font-size: 13px;
+}
+
+/* 6. 表格样式 */
+.zhihu-table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--zhihu-card-shadow);
+}
+
+.zhihu-table th {
+    background-color: #fafafa;
+    font-weight: 500;
+    border-bottom: 1px solid var(--zhihu-border);
+    color: var(--zhihu-secondary-text);
+    padding: 12px 16px;
+}
+
+.zhihu-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--zhihu-border);
+    vertical-align: middle;
+}
+
+.zhihu-table tr:last-child td {
+    border-bottom: none;
+}
+
+.zhihu-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.zhihu-table-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* 7. 特定页面样式 */
+/* 登录页 */
+.login-bg {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--zhihu-card-shadow);
+    padding: 40px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-title {
+    font-size: 26px;
+    color: var(--zhihu-blue);
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: var(--zhihu-secondary-text);
+    font-size: 14px;
+}
+
+.login-form .form-control {
+    margin-bottom: 20px;
+}
+
+/* 首页样式 */
+.welcome-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.welcome-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--zhihu-blue);
+    margin-bottom: 16px;
+}
+
+.welcome-subtitle {
+    font-size: 18px;
+    color: var(--zhihu-secondary-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 用户列表页 */
+.user-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.user-list-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.user-list-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--zhihu-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* 论坛特定样式 */
+.question-list-item {
+    padding: 20px;
+    border-bottom: 1px solid var(--zhihu-border);
+    transition: background-color 0.2s;
+}
+
+.question-list-item:hover {
+    background-color: #f9f9f9;
+}
+
+.question-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--zhihu-text);
+    margin-bottom: 8px;
+}
+
+.question-excerpt {
+    color: var(--zhihu-secondary-text);
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.question-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--zhihu-dark-gray);
+    font-size: 13px;
+}
+
+.question-meta i {
+    margin-right: 4px;
+}
+
+.tag-item {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #edf3fa;
+    color: var(--zhihu-blue);
+    border-radius: 100px;
+    font-size: 13px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.tag-item:hover {
+    background-color: #e0ebf7;
+    color: var(--zhihu-dark-blue);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .zhihu-form-card {
+        padding: 20px;
+    }
+    
+    .login-card {
+        width: 90%;
+        padding: 30px;
+    }
+    
+    .welcome-title {
+        font-size: 28px;
+    }
+    
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+}
